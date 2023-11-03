@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
 const express = require("express");
+const cors= require("cors");
+const mongoose = require("mongoose");
 const UserModel = require("./models/user");
 const DeliveryModel = require('./models/delivery');
 const bcrypt = require('bcrypt');
@@ -18,7 +19,7 @@ mongoose.connect(dbUrl, connectionParams).then(() => {
 }).catch((e) => {
   console.log("Error: ", e);
 });
-
+app.use(cors());
 app.use(express.json()); // Enable JSON request body parsing
 
 app.listen(PORT, () => {
